@@ -2,11 +2,35 @@
 
 ## Project Background
 
-[Please add project background]
+Building a medical imaging dataset needs an outcome label for every patient,
+and that label almost always lives in free text: a pathology report, a
+progress note, a treatment plan. Because that text is protected patient data,
+any system that reads it has to run an open-weight model on the institution's
+own hardware. [OncoTrace](https://github.com/uchicago-dsi/oncotrace) does
+that: a locally served model extracts structured labels from clinical
+documents and must quote the passage each label rests on. Trace View, its
+companion viewer, shows a reviewer the label, the cited text, and what the
+model searched for and read.
+
+Several recent systems attach source passages to extracted labels, but the
+field has not measured whether those passages mean what they appear to mean.
+Does the cited text support the label? Did the model rely on it? Does the
+system abstain when the record does not say? When is an agent that searches
+a record selectively worth its cost compared with reading the whole record?
 
 ## Project Goals
 
-[Please add project background]
+Build a public, reproducible benchmark for evidence-grounded clinical
+extraction from openly available corpora that already carry expert reference
+labels and evidence spans; evaluate OncoTrace against it alongside rule-based,
+supervised, and one-shot baselines with abstention and cost accounted for;
+use Trace View to sort failures into their causes; and fix what the benchmark
+exposes, testing every change as a paired experiment on held-out data.
+
+This repository holds the converters, task definitions, run configs, analysis
+and write-ups. It releases no restricted text: credentialed corpora are
+referenced by ID only. General improvements to the extraction tool go to
+OncoTrace itself by pull request.
 
 ## Usage
 
